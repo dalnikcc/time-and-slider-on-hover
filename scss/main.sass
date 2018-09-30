@@ -1,0 +1,841 @@
+@import "functions"
+@import "mixins"
+@import "sprites"
+@import "base"
+@import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+@import "slick.css"
+@import "slick-theme.css" 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800')
+
+@mixin open-sans_regular
+	font-family: 'Open Sans', sarial
+	font-weight: 400
+
+@mixin open-sans_semibold
+	font-family: 'Open Sans', sarial
+	font-weight: 600
+
+@mixin open-sans_bold
+	font-family: 'Open Sans', sarial
+	font-weight: 700
+
+@mixin open-sans_extrabold
+	font-family: 'Open Sans', sarial
+	font-weight: 800
+
+@mixin transform($transform-x : 0, $transform-y : 0) 
+	-moz-transform: translate($transform-x, $transform-y)
+	-o-transform: translate($transform-x, $transform-y)
+	-ms-transform: translate($transform-x, $transform-y)
+	-webkit-transform: translate($transform-x, $transform-y)
+	transform: translate($transform-x, $transform-y)
+
+@mixin transition($value : 0.3s)
+	-webkit-transition: $value
+	-moz-transition: $value
+	-ms-transition: $value
+	-o-transition: $value
+	transition: $value
+
+@mixin radius($border-radius) 
+	-webkit-border-radius: $border-radius
+	-moz-border-radius: $border-radius	
+	border-radius: $border-radius
+
+@mixin rotate($value, $transition : 0.3s)
+	-webkit-transform: rotate($value)
+	-moz-transform: rotate($value)
+	-ms-transform: rotate($value)
+	-o-transform: rotate($value)
+	@include transition($transition)
+
+@mixin hidden_tag($value : 0.3s)
+	opacity: 0
+	visibility: hidden
+	@include transition($value)
+
+@mixin visible_tag($value : 0.3s)
+	opacity: 1
+	visibility: visible
+	@include transition($value)
+
+ul,ol
+	margin: 0
+	padding: 0
+	list-style: none
+a
+	text-decoration: none
+	&:hover
+		text-decoration: none 
+p
+	margin: 0
+a,span,p,h1,h2,li,label
+	@include open-sans_regular
+
+.smooth_visible
+	@include hidden_tag(2s)
+
+.smooth_show
+	@include visible_tag(2s)
+
+body
+	background-color: #181e2d
+
+.container
+	max-width: 1200px 
+
+$pale-white-color: #738196
+ 
+.flex
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+
+//dots
+.dots_wrapper
+	position: relative
+
+.dots
+	position: absolute
+	height: 500px
+	top: 50px
+	left: 0
+	right: 0
+	z-index: -1
+	div
+		&:nth-child(1)
+			left: 121px
+			top: 124px
+			animation-delay: 1s
+		&:nth-child(2)
+			left: -22px
+			top: 239px
+			animation-delay: 5s
+		&:nth-child(3)
+			left: 77px
+			top: 357px
+			animation-delay: 2s
+		&:nth-child(4)
+			left: 236px
+			top: 270px
+			animation-delay: 3s
+		&:nth-child(5)
+			left: 204px
+			bottom: 37px
+			animation-delay: 1s
+		&:nth-child(6)
+			left: -31px
+			bottom: -27px
+			animation-delay: 4s
+		&:nth-child(7)
+			left: 365px
+			bottom: 84px
+			animation-delay: 5s
+		&:nth-child(8)
+			right: 236px
+			top: 356px
+			animation-delay: 2s
+		&:nth-child(9)
+			right: 129px
+			top: 129px
+			animation-delay: 2s
+		&:nth-child(10)
+			right: 135px
+			top: 284px
+			animation-delay: 3s
+		&:nth-child(11)
+			right: 20px
+			bottom: 79px
+			animation-delay: 6s
+		&:nth-child(12)
+			right: -55px
+			top: 284px
+			animation-delay: 2s
+		&:nth-child(13)
+			right: 184px
+			bottom: -7px
+			animation-delay: 4s
+.dot
+	position: absolute
+	width: 8px
+	height: 8px
+	background-color: #077eff
+	border-radius: 50%
+	animation: pulseDot 3s infinite
+	@include transition
+// @-webkit-keyframes 
+// @-o-keyframes 
+// @-moz-keyframes 
+
+@keyframes pulseDot
+	0%
+		box-shadow:  0 0 0 0 #077eff
+	50%
+		box-shadow:  0 0 17px 1px #077eff
+	100%
+		box-shadow:  0 0 0 0 #077eff
+//header
+.header
+	position: fixed
+	top: 0
+	right: 0
+	left: 0
+	padding: 40px 0 20px
+	background-color: #181e2d
+	z-index: 999
+	@include transition
+
+.fixed_active
+	box-shadow: 0 20px 29px -14px rgba(0, 0, 0, 0.4)
+	padding: 18px 0
+
+.header_container
+	padding: 0
+
+//menu
+.header_nav
+	width: 100%
+
+.hader_link
+	display: block
+	padding: 10px 16px
+	line-height: 1
+	&:hover
+		.header_link-text
+			color: #077eff
+			@include transition
+			&:after
+				@include visible_tag
+				@include transition
+	&:active,
+	&:focus
+		outline: none
+
+.header_link-text
+	position: relative
+	color: #d0e5ff
+	@include transition
+	&:after
+		position: absolute
+		content: ''
+		right: -5px
+		left: -5px
+		height: 1px 
+		top: 50%
+		background-color: #077eff
+		@include hidden_tag 
+
+.header_logo
+	text-align: center
+	a
+		margin-right: 60px
+
+.header_lang,
+.header_login
+	position: relative
+	&:after
+		position: absolute
+		content: ''
+		@include transition
+	.hader_link
+		&:hover
+			.header_link-text
+				&:after
+					display: none
+
+.header_lang
+	padding-right: 10px
+	cursor: pointer
+	&:after
+		top: 14px
+		right: 0
+		@include sprite('arrow_down')
+		
+.header_login
+	padding-left: 8px
+	margin-left: 24px
+	&:after
+		left: 0
+		top: 11px
+		@include sprite('ic-person-24-px')
+
+.header_lang-submenu
+	position: absolute
+	right: 20px
+	z-index: 555
+	@include hidden_tag
+
+.header_lang-link
+	display: block
+	width: max-content
+	padding: 4px
+	border-radius: 2px
+	background-color: #262f47
+	color: #d0e5ff
+
+.header_lang__active
+	&:after
+		@include rotate(180deg)
+
+.show_lang_menu
+	@include visible_tag
+
+.header_mobile
+	display: none
+
+//main_content
+.main_content
+	padding-top: 81px
+
+.main_summary
+	padding-top: 56px
+	font-size: 17px
+	color: #fff
+	text-align: center
+
+.h1
+	margin: 0
+	padding: 8px 0 40px
+	font-size: 48px  
+	color: #fff
+	text-align: center
+	line-height: 1.38  
+	@include open-sans_extrabold
+
+.blue_text
+	color: #077eff
+	@include open-sans_extrabold
+
+// /btns
+.main_btns
+	text-align: center
+
+.btn
+	position: relative
+	border-radius: 100px
+	padding: 15px 50px 15px 22px
+	margin: 0 12px
+	border: 1.5px solid transparent
+	line-height: 1.5
+	color: #fff
+	@include open-sans_semibold
+	@include transition
+	&:after
+		position: absolute
+		content: ''
+		width: 23px
+		height: 23px
+		right: 14px
+		top: 16px
+		background-repeat: no-repeat
+		background-position: 50% 
+	&:hover,
+	&:active,
+	&:focus
+		color: #fff
+		box-shadow: inset 0 1px 8px 0 rgba(0, 0, 0, 0.5)
+		background-color: #1a82ff
+		@include transition
+
+.btn_whitepapper
+	background-color: #1a82ff
+	&:after
+		background-image: url(../images/arrow_r_opacity.svg)
+
+.btn_project
+	border: 1.5px solid #0e94fc
+	@include transition
+	&:after
+		background-image: url(../images/arrow_r_blue.svg)
+	&:hover,
+	&:active,
+	&:focus
+		background-color: #1a82ff
+		@include transition
+		&:after
+			background-image: url(../images/arrow_r_opacity.svg)
+
+//timer
+.timer
+	padding: 55px 0 44px
+
+.timer_item
+	position: relative
+	padding: 0 20px 0 10px
+	&:not(:last-child):after
+		position: absolute
+		content: ':'
+		font-size: 48px
+		line-height: 1
+		top: -5px
+		right: 0
+		color: #fff
+		@include open-sans_extrabold
+
+.timer_time
+	color: #fff
+	font-size: 44px
+	line-height: 1
+	@include open-sans_extrabold
+
+.timer_name
+	color: $pale-white-color
+	font-size: 15px
+	line-height: 1.67
+	letter-spacing: 0.2px
+	
+//form
+#form_feedback
+	margin-left: -12px
+.form_input
+	color: #fff
+	background-color: transparent
+	border: 0
+	padding: 0 8px 12px 15px
+	border-bottom: 1px solid #333b4c
+	animation: hide_placeholder 1s forwards
+	border-radius: 0.5px
+	&:focus,
+	&:required
+		outline: none
+		~ .input_text
+			font-size: 12px
+			bottom: 20px
+			@include transition
+	&:invalid
+		outline: none
+		~ .input_text
+			font-size: 15px
+			bottom: -1px
+			@include transition
+.form_input_pswd
+	padding-right: 33px
+
+.form_input_wrap
+	position: relative
+	display: inline
+	padding-left: 20px
+
+.input_text
+	position: absolute
+	left: 34px
+	color: $pale-white-color
+	line-height: 1.6
+	z-index: -1
+
+.error_input
+	position: absolute
+	width: 100%
+	bottom: -40px
+	left: 25px
+	font-size: 12px
+	color: #ff165e
+	@include hidden_tag()
+
+.error_input-show
+	@include visible_tag
+
+.icon-eye
+	position: absolute
+	right: 12px
+	top: 5px
+	cursor: pointer
+	@include sprite("icon-eye")
+
+.icon-eye_active
+	top: 4px
+	@include sprite("active_eye")
+
+.form_confirm
+	text-align: center
+	padding: 15px 50px
+	border-radius: 4px 
+	border: 0
+	margin: 0 10px
+	color: #fff
+	cursor: pointer
+	background-color: #e81254
+	@include transition
+	@include open-sans_semibold
+	&:focus
+		outline: none
+	&:hover
+		background-color: #cc124d
+		@include transition
+
+//pointers
+.pointers
+	margin-bottom: -190px
+	padding: 24px  0  0px  21px
+	img
+		width: 100%
+
+//plan
+.plan
+	padding: 20px 0
+
+.plan_title
+	color: $pale-white-color 
+	font-size: 15px
+	line-height: 1.6
+	text-align: center
+
+.plan_slider--numbers
+	padding-top: 9px
+
+.plan_numbers
+	padding: 10px 0 5px
+	text-align: center
+
+.plan_numbers--dynamic
+	font-size: 30px
+	letter-spacing: 0.2px
+	color: #fff
+	@include open-sans_bold
+
+.plan_numbers--static
+	font-size: 22px
+	letter-spacing: 0.2px
+	color: #fff
+	@include open-sans_semibold
+
+.plan_slider--progress 
+	position: relative
+	height: 24px
+	width: 485px
+	cursor: pointer
+	&:after
+		position: absolute
+		content: ''
+		top: 50%
+		margin-top: -2px
+		height: 4px
+		width: 100%
+		border-radius: 4px 
+		background-color: rgba(172,197,255,0.1)
+
+.plan_slider--live
+	position: absolute
+	left: 0
+	top: 50%
+	right: 100%
+	margin-top: -2px
+	height: 4px
+	background-color: #23dbb9
+	@include transition
+
+.plan_slider--change
+	position: absolute
+	width: 24px
+	height: 24px
+	top: 50%
+	margin-top: -12px
+	margin-right: -12px
+	right: 100%
+	background-color: #23dbb9
+	opacity: 1
+	border-radius: 50%
+	cursor: pointer
+	z-index: 200 
+	@include transition
+
+.progress_num
+	position: relative
+	color: #fff
+	font-size: 12px 
+	&._1
+		&:after
+			left: 13px
+	&._2
+		text-align: center
+		&:after
+			left: 50%
+			margin-left: -3px
+	&._3
+		text-align: right
+		&:after
+			right: 13px
+	&:after
+		position: absolute
+		content: '|'
+		top: -18px
+		color: #2b354a
+		font-size: 10px
+		z-index: 100
+
+.progress_num--active
+	&:after
+		color: #23dbb9
+//payment
+.payment_title
+	text-align: center
+	color: #738196
+	padding: 20px 0 15px
+	font-size: 15px
+	line-height: 1.6
+
+.payment_icons
+	svg
+		width: 40px
+		height: 40px
+		margin: 0 7px
+
+//slider 
+.slick
+	margin-top: 116px
+
+.slider_item
+	// max-width: 261px
+	height: 297px
+	border-radius: 6px
+	background-color: #1d2536
+	margin: 0 16px
+	flex-direction: column
+	padding: 30px 30px 16px 30px
+
+.slider_logo
+	flex: 1 0 auto
+
+.slider_text
+	font-size: 15px
+	line-height: 1.67
+	letter-spacing: 0.2px
+	text-align: left
+	margin: 20px 0 30px
+	flex: 1 0 auto
+	color: #fff
+
+.slider_date
+	color: #777c86
+	flex: 0 0 auto
+	font-size: 12px
+
+.slick-arrow
+	position: absolute
+	font-size: 0
+	background-color: transparent
+	outline: none
+	border: 0
+	padding: 44px 22px
+	top: 50% 
+	width: 20px
+	height: 38px
+	cursor: pointer
+	&:after,
+	&:before
+		position: absolute
+		content: ''
+		width: 2px
+		height: 26px
+		background-color: rgba(255,255,255,0.2)
+	&:after
+		top: 22px
+		@include rotate(45deg)
+	&:before
+		bottom: 22px
+		@include rotate(-45deg)
+	&:focus
+		outline: none
+	&:hover
+		background-color: #1a2234
+		&:after,
+		&:before
+			background-color: #23dbb9
+
+.slick-prev
+	left: -65px 
+
+.slick-next
+	right: -65px
+	margin-top: -56px
+	@include rotate(180deg)
+
+.slick-dotted.slick-slider
+	margin-bottom: 100px
+
+.slick-dots
+	bottom: -60px
+	li button
+		&:before
+			color: #535559
+			font-size: 30px
+			opacity: 1
+			line-height: 0.6 
+			border-radius: 50%
+		&:hover
+			&:before
+				color: #679a9a
+	li.slick-active button:before
+		border-color: rgba(35,219,185, 0.2)
+		opacity: 1
+		color: #23dbb9
+ 
+@media screen and (max-width: 1200px) {
+.dots div:nth-child(12)
+	display: none
+
+.pointers
+	margin-bottom: -90px
+
+.darken
+	display: none}
+
+@media screen and (max-width: 992px) {
+.header_nav_left,
+.header_nav_right,
+.dots_wrapper	
+	display: none
+
+.header
+	padding-top: 20px
+
+.fixed_active
+	padding: 10px 0
+
+.header_lang-submenu
+	display: none
+	position: initial
+	@include visible_tag
+	@include transition(0s)
+
+.header_lang-link
+	width: 100%
+	padding-left: 30px
+
+.header_lang
+	padding: 0
+	&:after
+		right: 15px
+
+.header_mobile
+	display: block
+
+.mobile_toggle 
+	margin: 0 20px
+	width: 40px
+	height: 36px
+
+.mobile_line 
+	position: absolute
+	left: 28px
+	height: 2px
+	width: 24px
+	background-color: #fff
+	@include transition
+
+.mobile_line._1 
+	top: 8px
+
+.mobile_line._2 
+	top: 17px
+
+.mobile_line._3 
+	top: 26px
+
+.mobile_menu
+	position: absolute
+	left: -290px
+	top: 30px
+	width: 290px
+	background-color: #181e2d
+	z-index: 999
+	@include radius(10px)
+	@include hidden_tag
+
+.menu_link
+	padding: 5px 10px
+	width: 100%
+	&:hover
+		background-color: #696969
+		color: #fff
+
+.mobile_line--active
+	.mobile_line._1 
+		top: 17px
+		@include rotate(45deg)
+		@include transition
+	.mobile_line._2
+		display: none
+		@include transition
+	.mobile_line._3
+		top: 17px
+		@include rotate(-45deg)
+		@include transition
+
+.menu_show 
+	left: 0
+	@include visible_tag}
+
+@media screen and (max-width: 768px) {
+.plan_slider--progress
+	width: 345px
+
+.h1
+	font-size: 33px
+
+.main_summary
+	padding-top: 20px
+
+.btn
+	margin-bottom: 20px
+
+#form_feedback
+	display: -webkit-flex
+	display: -moz-flex
+	display: -ms-flex
+	display: -o-flex
+	display: flex
+	flex-direction: column
+
+.form_input_wrap
+	margin-bottom: 40px
+
+.form_input
+	padding-top: 15px
+	&:focus,
+	&:required
+		outline: none
+		~ .input_text
+			bottom: 35px
+	&:invalid 
+		~ .input_text
+			bottom: 9px
+
+.error_input
+	bottom: -20px
+
+.pointers
+	margin: 0
+
+.darken
+	display: none}
+
+@media screen and (max-width: 414px) {
+.plan_slider--progress
+	width: 290px
+
+.btn
+	font-size: 14px
+	margin: 0 0 20px
+	padding-right: 40px
+
+.plan_numbers--dynamic
+	display: block
+
+.timer
+	flex-direction: column
+
+.timer_item
+	text-align: center
+	&:not(:last-child):after
+		display: none
+
+.payment_icons 
+	text-align: center
+	svg
+		margin: 0 2px
+
+.slick
+	margin-top: 20px}

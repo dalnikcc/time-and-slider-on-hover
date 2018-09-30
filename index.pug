@@ -1,0 +1,188 @@
+extends pug/base
+
+append vars
+	- html.classList.push("page-index")
+	- meta.charset = "utf-8"
+	- meta.description = "test task"
+	- title = "Христев Роман Борисович test task"
+	- meta.viewport = "width=device-width, initial-scale=1"
+
+block content
+	.container.dots_wrapper
+		.dots
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+			.dot
+	.header
+		.container.header_container
+			.row.justify-content-between.no-gutters
+				.col-auto.header_mobile
+					.mobile_toggle
+						span.mobile_line._1
+						span.mobile_line._2
+						span.mobile_line._3
+					.mobile_menu
+						ul
+						
+				.col-auto.header_nav_left
+					nav
+						ul.header_ul.flex
+							li.header_li
+								a.hader_link(href="#") 
+									span.header_link-text About
+							li.header_li
+								a.hader_link(href="#") 
+									span.header_link-text Project
+							li.header_li
+								a.hader_link(href="#") 
+									span.header_link-text Monetization
+							li.header_li
+								a.hader_link(href="#") 
+									span.header_link-text Roadmap
+				.col-3.header_logo
+					a(href="#")
+						img(src="images/logo.svg", alt="logo", srcset="images/logo/logo.png 1x, images/logo/logo@2x.png 2x")
+				.col-auto.no-gutters.header_nav_right
+					nav.header_nav
+						ul.header_ul.flex
+							li.header_li
+								a.hader_link(href="#") 
+									span.header_link-text Team
+							li.header_li
+								a.hader_link(href="#") 
+									span.header_link-text Bounty
+							li.header_li.header_lang
+								span.hader_link.header_link-text EN
+								ul.header_lang-submenu
+									li.header_lang-li
+										span.header_lang-link.header_link-text RU
+							li.header_li.header_login
+								a.hader_link(href="#") 
+									span.header_link-text Login
+
+
+	.main_content
+		.container
+			.row.justify-content-center.no-gutters
+				.col-12
+					p.main_summary Make Myspace Your Best Design Space
+				.col-md-8.col-xl-7
+					h1.h1 Study 
+						span.blue_text 800 
+						| Numbers Still Popular With Advertisers
+				.col-12.main_btns
+					a.btn.btn_whitepapper(href="#") Whitepaper
+					a.btn.btn_project(href="#") Quick familiarization with project
+				.col-12
+					.timer.flex.justify-content-center
+						.timer_item#timer_days
+							p.timer_time 0
+							p.timer_name Days
+						.timer_item#timer_hours
+							p.timer_time 0
+							p.timer_name Hours
+						.timer_item#timer_minutes
+							p.timer_time 0
+							p.timer_name Minutes
+						.timer_item#timer_seconds
+							p.timer_time 0
+							p.timer_name Seconds
+				.col-12.smooth_visible
+					.form.flex.justify-content-center
+						form#form_feedback(method="POST")
+							.form_input_wrap
+								input.form_input(type="text" name="user_email" required value="")
+								span.input_text Enter e-mail
+								span.error_input Please enter a valid email address
+							.form_input_wrap
+								input.form_input.form_input_pswd(type="password" required name="user_psw" value="")
+								span.input_text Create a password
+								span.error_input Password must be at least 6 characters
+								span.icon-eye
+							input.form_confirm(type="submit" value="Confirm")
+		.pointers.smooth_visible
+			img(src="images/graph.png", alt="")
+		.container
+			.row.justify-content-center.no-gutters
+				.plan.smooth_visible
+					p.plan_title.col-12 Realization plan
+					.plan_numbers.justify-content-md-center.row
+						.col-md-auto
+							span.plan_numbers--dynamic 0
+							span.plan_numbers--static / 300,000,000
+					.plan_slider.justify-content-md-center.row
+						.col-md-auto
+							.plan_slider--progress
+								.plan_slider--change
+								.plan_slider--live
+							.plan_slider--numbers.row
+								p.col.progress_num._1.progress_num--active 0
+								p.col.progress_num._2 155,000,000
+								p.col.progress_num._3 300,000,000
+
+				.col-12.payment.justify-content-center.smooth_visible
+					p.col-12.payment_title Accepted for payment
+					.payment_icons.justify-content-md-center.row
+						.col-md-auto
+							a(href="#")
+								+svg("btc")
+							a(href="#")
+								+svg("etc-alt")
+							a(href="#")
+								+svg("xrp")
+							a(href="#")
+								+svg("dash")
+							a(href="#")
+								+svg("ltc")
+							a(href="#")
+								+svg("eth")
+				.col-12.slider.smooth_visible
+					.slick
+						.slider_item.flex
+							.slider_logo
+								img(src="images/btc_logo/btc_logo.png", alt="btc_logo" srcset="images/btc_logo/btc_logo.png 1x, images/btc_logo/btc_logo@2x.png 2x")
+							p.slider_text “With so many different ways today to find information online, it can sometimes be hard to know where to go to first”
+							p.slider_date 11 APR 2018
+						.slider_item.flex
+							.slider_logo
+								img(src="images/crypto_logo/crypto_logo.png", alt="crypto_logo" srcset="images/crypto_logo/crypto_logo.png 1x, images/crypto_logo/crypto_logo@2x.png 2x")
+							p.slider_text “With so many different ways today to find information online, it can sometimes be hard to know where to go to first”
+							p.slider_date 11 APR 2018
+						.slider_item.flex
+							.slider_logo
+								img(src="images/btc_news_logo/btc_news_logo.png", alt="btc_news_logo" srcset="images/btc_news_logo/btc_news_logo.png 1x, images/btc_news_logo/btc_news_logo@2x.png 2x")
+							p.slider_text “With so many different ways today to find information online, it can sometimes be hard to know where to go to first”
+							p.slider_date 11 APR 2018
+						.slider_item.flex
+							.slider_logo
+								img(src="images/coin_logo/coin_logo.png", alt="coin_logo" srcset="images/coin_logo/coin_logo.png 1x, images/coin_logo/coin_logo@2x.png 2x")
+							p.slider_text “With so many different ways today to find information online, it can sometimes be hard to know where to go to first”
+							p.slider_date 11 APR 2018
+						.slider_item.flex
+							.slider_logo
+								img(src="images/coin_logo/coin_logo.png", alt="coin_logo" srcset="images/coin_logo/coin_logo.png 1x, images/coin_logo/coin_logo@2x.png 2x")
+							p.slider_text “With so many different ways today to find information online, it can sometimes be hard to know where to go to first”
+							p.slider_date 11 APR 2018
+						.slider_item.flex
+							.slider_logo
+								img(src="images/btc_logo/btc_logo.png", alt="btc_logo" srcset="images/btc_logo/btc_logo.png 1x, images/btc_logo/btc_logo@2x.png 2x")
+							p.slider_text “With so many different ways today to find information online, it can sometimes be hard to know where to go to first”
+							p.slider_date 11 APR 2018
+						.slider_item.flex
+							.slider_logo
+								img(src="images/crypto_logo/crypto_logo.png", alt="crypto_logo" srcset="images/crypto_logo/crypto_logo.png 1x, images/crypto_logo/crypto_logo@2x.png 2x")
+							p.slider_text “With so many different ways today to find information online, it can sometimes be hard to know where to go to first”
+							p.slider_date 11 APR 2018
+
+
+
